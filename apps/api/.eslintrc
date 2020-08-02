@@ -1,1 +1,5 @@
-{ "extends": "../../.eslintrc", "rules": {}, "ignorePatterns": ["!**/*"] }
+{
+    "extends": "../../.eslintrc",
+    "rules": {"no-undef": "off", "@typescript-eslint/no-var-requires": "off"},
+    "ignorePatterns": ["!**/*"]
+}

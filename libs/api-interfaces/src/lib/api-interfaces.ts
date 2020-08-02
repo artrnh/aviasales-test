@@ -1,3 +1,5 @@
-export interface Message {
-  message: string;
+export interface User {
+    id: number;
+    shared: boolean;
+    email: string;
 }
