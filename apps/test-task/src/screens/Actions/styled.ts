@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import {device} from 'test-task/theme';
+import {titleFont} from 'test-task/theme/fonts';
+
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -14,9 +17,10 @@ export const Title = styled.h1`
 
     padding-left: 30px;
 
-    font-family: 'Shnobel';
-    font-size: 50px;
-    font-weight: normal;
-    line-height: 52px;
-    text-align: center;
+    ${titleFont}
+
+    @media ${device.mobileL} {
+        font-size: 27px;
+        line-height: 28px;
+    }
 `;

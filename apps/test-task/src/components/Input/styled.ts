@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import {inputFont} from 'test-task/theme/fonts';
+
 export const Wrapper = styled.input`
     width: 100%;
     min-width: 200px;
@@ -13,9 +15,5 @@ export const Wrapper = styled.input`
     border: none;
     outline: none;
 
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 27px;
+    ${inputFont}
 `;

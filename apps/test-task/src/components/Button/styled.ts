@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
+import {buttonFont} from 'test-task/theme/fonts';
+
 export const Wrapper = styled.button`
     min-width: 230px;
 
     padding: 9px 0 19px;
 
-    font-family: 'Shnobel';
-    font-weight: normal;
-    font-size: 40px;
-    line-height: 42px;
-    text-align: center;
+    ${buttonFont}
 
-    color: #7f4156;
+    color: ${(props) => props.theme.colors.darkPink};
     background-color: white;
 
     border: 2px solid white;
@@ -23,8 +21,8 @@ export const Wrapper = styled.button`
 
     :hover {
         color: white;
-        background-color: #7f4156;
-        border-color: #7f4156;
+        background-color: ${(props) => props.theme.colors.darkPink};
+        border-color: ${(props) => props.theme.colors.darkPink};
     }
 
     :disabled {

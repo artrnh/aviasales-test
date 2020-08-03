@@ -8,8 +8,7 @@ import {Wrapper, Title, CrossedOut, Big} from './styled';
 const Final: React.FC = (props) => {
     const user = useSelector((state) => state.user);
 
-    const {shared, email} = user;
-    if (!shared || !email) return <Redirect to="/actions" />;
+    if (!user || !user.shared || !user.email) return <Redirect to="/actions" />;
 
     return (
         <Wrapper>

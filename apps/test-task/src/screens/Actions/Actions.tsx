@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
-import {createUser, getUser} from 'test-task/store/modules/user';
+import {createUser} from 'test-task/store/modules/user';
 
 import {Social, Email} from './components';
 import {Wrapper, Title} from './styled';
@@ -14,10 +14,9 @@ const Actions: React.FC = (props) => {
     const user = useSelector((state) => state.user);
 
     useEffect(() => {
-        const savedUserId = localStorage.getItem('userId');
+        const savedUser = localStorage.getItem('user');
 
-        if (!savedUserId) dispatch(createUser());
-        else dispatch(getUser(savedUserId));
+        if (!savedUser) dispatch(createUser());
     }, [dispatch]);
 
     if (!user) return null;

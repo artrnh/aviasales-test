@@ -1,6 +1,8 @@
 import styled, {css} from 'styled-components';
 
 import {CheckIcon} from 'test-task/assets/icons';
+import {device} from 'test-task/theme';
+import {numbersFont} from 'test-task/theme/fonts';
 
 export const Container = styled.div`
     position: relative;
@@ -12,6 +14,10 @@ export const Wrapper = styled.div<{shared: boolean}>`
     margin-bottom: 20px;
     padding-left: 64px;
     padding-right: 46px;
+
+    @media ${device.mobileL} {
+        padding: 0 40px;
+    }
 
     ${(props) =>
         props.shared &&
@@ -32,11 +38,20 @@ export const Label = styled.p<{shared: boolean}>`
         left: 0;
         top: 18px;
 
-        font-family: 'Shnobel';
-        font-size: 44px;
-        line-height: 46px;
-        font-weight: normal;
+        ${numbersFont}
+    }
+
+    @media ${device.mobileL} {
         text-align: center;
+
+        ::before {
+            content: '1.';
+            position: static;
+
+            margin-right: 5px;
+
+            font: inherit;
+        }
     }
 
     ${(props) =>
@@ -66,5 +81,5 @@ export const Check = styled(CheckIcon)`
 
     padding-bottom: 2px;
 
-    background-color: #7f4156;
+    background-color: ${(props) => props.theme.colors.darkPink};
 `;

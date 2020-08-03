@@ -3,6 +3,9 @@ import styled, {css} from 'styled-components';
 import {Button as _Button} from 'test-task/components';
 import {CheckIcon} from 'test-task/assets/icons';
 
+import {device} from 'test-task/theme';
+import {numbersFont} from 'test-task/theme/fonts';
+
 export const Wrapper = styled.div`
     position: relative;
 `;
@@ -17,6 +20,10 @@ export const Form = styled.form<{emailSent: boolean}>`
 
     padding-left: 64px;
     padding-right: 46px;
+
+    @media ${device.mobileL} {
+        padding: 0 40px;
+    }
 
     ${(props) =>
         props.emailSent &&
@@ -38,11 +45,20 @@ export const Label = styled.p<{emailSent: boolean}>`
         left: 0;
         top: -10px;
 
-        font-family: 'Shnobel';
-        font-size: 44px;
-        line-height: 46px;
-        font-weight: normal;
+        ${numbersFont}
+    }
+
+    @media ${device.mobileL} {
         text-align: center;
+
+        ::before {
+            content: '2.';
+            position: static;
+
+            margin-right: 5px;
+
+            font: inherit;
+        }
     }
 
     ${(props) =>
@@ -59,6 +75,15 @@ export const Button = styled(_Button)`
 
     width: 230px;
     margin-top: 40px;
+
+    @media ${device.mobileL} {
+        font-size: 30px;
+        line-height: 31px;
+
+        ::after {
+            content: '!';
+        }
+    }
 `;
 
 export const Check = styled(CheckIcon)`
@@ -72,5 +97,5 @@ export const Check = styled(CheckIcon)`
 
     padding-bottom: 2px;
 
-    background-color: #7f4156;
+    background-color: ${(props) => props.theme.colors.darkPink};
 `;

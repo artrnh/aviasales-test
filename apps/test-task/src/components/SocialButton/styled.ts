@@ -1,15 +1,13 @@
 import styled, {css} from 'styled-components';
 
-import {FacebookShareButton, OKShareButton, TwitterShareButton, VKShareButton} from 'react-share';
+import {
+    FacebookShareButton,
+    OKShareButton,
+    TwitterShareButton,
+    VKShareButton,
+} from 'react-share';
 
 import {Soc} from './SocialButton';
-
-const buttonColors = {
-    facebook: '#3B5998',
-    twitter: '#00ACED',
-    vk: '#45668E',
-    ok: '#EB722E',
-};
 
 export const buttonStyles = css<{soc: Soc; disabled: boolean}>`
     display: flex;
@@ -19,7 +17,8 @@ export const buttonStyles = css<{soc: Soc; disabled: boolean}>`
     width: 53px;
     height: 53px;
 
-    background-color: ${(props) => buttonColors[props.soc]} !important;
+    background-color: ${(props) =>
+        props.theme.colors.social[props.soc]} !important;
 
     border: none;
     border-radius: 50%;

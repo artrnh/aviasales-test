@@ -21,7 +21,7 @@ export const createUser = () => {
         try {
             const {data} = await userApi.createUser();
 
-            localStorage.setItem('userId', data.id);
+            localStorage.setItem('user', JSON.stringify(data));
             dispatch({type: CREATE_USER_SUCCESS, payload: {data}});
         } catch (error) {
             dispatch({type: CREATE_USER_FAIL});
@@ -36,6 +36,7 @@ export const updateUser = (id: string, props: Partial<User>) => {
         try {
             const {data} = await userApi.updateUser(id, props);
 
+            localStorage.setItem('user', JSON.stringify(data));
             dispatch({type: UPDATE_USER_SUCCESS, payload: {data}});
         } catch (error) {
             dispatch({type: UPDATE_USER_FAIL});
@@ -50,6 +51,7 @@ export const getUser = (id: string) => {
         try {
             const {data} = await userApi.getUser(id);
 
+            localStorage.setItem('user', JSON.stringify(data));
             dispatch({type: GET_USER_SUCCESS, payload: {data}});
         } catch (error) {
             dispatch({type: GET_USER_FAIL});
@@ -57,7 +59,7 @@ export const getUser = (id: string) => {
     };
 };
 
-const initialState = {};
+const initialState = JSON.parse(localStorage.getItem('user'));
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
