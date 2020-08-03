@@ -1,12 +1,18 @@
+import * as express from 'express';
+
 import {User} from '../models';
 
-export const createUser = (req, res, next) => {
+export const createUser = (
+    req: express.Request,
+    res: express.Response,
+    next
+) => {
     return User.create()
         .then(([user]) => res.json(user))
         .catch(next);
 };
 
-export const getUser = (req, res, next) => {
+export const getUser = (req: express.Request, res: express.Response, next) => {
     const {id} = req.params;
 
     return User.find(id)
@@ -14,7 +20,11 @@ export const getUser = (req, res, next) => {
         .catch(next);
 };
 
-export const updateUser = (req, res, next) => {
+export const updateUser = (
+    req: express.Request,
+    res: express.Response,
+    next
+) => {
     const {id} = req.params;
     const {props} = req.body;
 

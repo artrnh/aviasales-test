@@ -3,6 +3,7 @@ import React, {useState, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {Input} from 'test-task/components';
+import {RootState} from 'test-task/store/modules';
 import {updateUser} from 'test-task/store/modules/user';
 
 import {Wrapper, Form, Label, Button, Check} from './styled';
@@ -10,8 +11,8 @@ import {Wrapper, Form, Label, Button, Check} from './styled';
 const Email: React.FC = (props) => {
     const dispatch = useDispatch();
 
-    const id = useSelector((state) => state.user.id);
-    const email = useSelector((state) => state.user.email);
+    const id = useSelector((state: RootState) => state.user.id);
+    const email = useSelector((state: RootState) => state.user.email);
 
     const [value, setValue] = useState(email || '');
     const [valid, setValid] = useState(false);

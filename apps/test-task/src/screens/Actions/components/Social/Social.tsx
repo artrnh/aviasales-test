@@ -3,6 +3,7 @@ import React, {useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {SocialButton} from 'test-task/components';
+import {RootState} from 'test-task/store/modules';
 import {updateUser} from 'test-task/store/modules/user';
 
 import {Container, Wrapper, Label, Buttons, Check} from './styled';
@@ -10,8 +11,8 @@ import {Container, Wrapper, Label, Buttons, Check} from './styled';
 const Social: React.FC = (props) => {
     const dispatch = useDispatch();
 
-    const id = useSelector((state) => state.user.id);
-    const shared = useSelector((state) => state.user.shared);
+    const id = useSelector((state: RootState) => state.user.id);
+    const shared = useSelector((state: RootState) => state.user.shared);
 
     const handleShare = useCallback(() => {
         dispatch(updateUser(id, {shared: true}));
