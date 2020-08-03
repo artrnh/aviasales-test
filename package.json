@@ -23,7 +23,9 @@
         "update": "nx migrate latest",
         "workspace-schematic": "nx workspace-schematic",
         "dep-graph": "nx dep-graph",
-        "help": "nx help"
+        "help": "nx help",
+        "migrations": "cd ./apps/api && knex migrate:latest",
+        "app-start": "concurrently \"yarn start api\" \"yarn start test-task\""
     },
     "private": true,
     "dependencies": {
@@ -71,6 +73,7 @@
         "@typescript-eslint/parser": "2.19.2",
         "babel-jest": "25.1.0",
         "babel-plugin-styled-components": "1.10.7",
+        "concurrently": "^5.2.0",
         "cypress": "^4.1.0",
         "dotenv": "6.2.0",
         "eslint": "6.8.0",
