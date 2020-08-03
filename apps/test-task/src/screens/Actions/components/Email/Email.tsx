@@ -1,12 +1,29 @@
-import React, {useState, useCallback, ChangeEvent} from 'react';
+import React, {useState, useCallback} from 'react';
+
+import {useSelector, useDispatch} from 'react-redux';
 
 import {Input} from 'test-task/components';
+import {updateUser} from 'test-task/store/modules/user';
 
 import {Wrapper, Form, Label, Button, Check} from './styled';
 
 const Email: React.FC = (props) => {
-    const [value, setValue] = useState('');
+    const dispatch = useDispatch();
+
+    const id = useSelector((state) => state.user.id);
+    const email = useSelector((state) => state.user.email);
+
+    const [value, setValue] = useState(email || '');
     const [valid, setValid] = useState(false);
+
+    const handleSubmit = useCallback(
+        (e: React.FormEvent) => {
+            e.preventDefault();
+
+            dispatch(updateUser(id, {email: value}));
+        },
+        [dispatch, id, value]
+    );
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,15 +38,19 @@ const Email: React.FC = (props) => {
         [setValue, setValid]
     );
 
-    const emailSent = false;
-
     return (
         <Wrapper>
-            {emailSent && <Check />}
+            {!!email && <Check />}
 
-            <Form emailSent={emailSent}>
-                <Label emailSent={emailSent}>Оставь почту:</Label>
-                <Input value={value} onChange={handleChange} disabled={emailSent} />
+            <Form onSubmit={handleSubmit} emailSent={!!email}>
+                <Label emailSent={!!email}>Оставь почту:</Label>
+
+                <Input
+                    value={value}
+                    onChange={handleChange}
+                    disabled={!!email}
+                />
+
                 <Button disabled={!valid}>Отправить</Button>
             </Form>
         </Wrapper>

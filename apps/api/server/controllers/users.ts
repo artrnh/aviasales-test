@@ -2,7 +2,7 @@ import {User} from '../models';
 
 export const createUser = (req, res, next) => {
     return User.create()
-        .then((user) => res.json(user))
+        .then(([user]) => res.json(user))
         .catch(next);
 };
 
@@ -19,6 +19,6 @@ export const updateUser = (req, res, next) => {
     const {props} = req.body;
 
     return User.update(id, props)
-        .then((user) => res.json(user))
+        .then(([user]) => res.json(user))
         .catch(next);
 };

@@ -4,7 +4,7 @@ const selectableProps = ['id', 'email', 'shared'];
 const tableName = 'users';
 
 export default {
-    create: () => knex.insert({}).returning(selectableProps).into(tableName),
+    create: () => knex.insert({}, selectableProps).into(tableName),
 
     update: (id, props) =>
         knex
@@ -13,5 +13,5 @@ export default {
             .where({id})
             .returning(selectableProps),
 
-    find: (id) => knex.select(selectableProps).from(tableName).where({id}),
+    find: (id) => knex.first(selectableProps).from(tableName).where({id}),
 };

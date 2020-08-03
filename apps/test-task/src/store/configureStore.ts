@@ -4,7 +4,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import rootReducer from './modules';
 
-export function configureStore(preloadedState) {
+export function configureStore(preloadedState = {}) {
     const middlewares = [thunkMiddleware];
     const middlewareEnhancer = applyMiddleware(...middlewares);
 

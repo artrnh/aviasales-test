@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 
 import url from 'url';
 
-import {FacebookIcon, TwitterIcon, VkIcon, OkIcon, HeartIcon} from 'test-task/assets/icons';
+import {
+    FacebookIcon,
+    TwitterIcon,
+    VkIcon,
+    OkIcon,
+    HeartIcon,
+} from 'test-task/assets/icons';
 
 import {FacebookButton, OkButton, TwitterButton, VkButton} from './styled';
 
@@ -25,10 +31,11 @@ export type Soc = 'facebook' | 'twitter' | 'vk' | 'ok';
 interface Props {
     soc: Soc;
     disabled?: boolean;
+    onShareWindowClose(): void;
 }
 
 const SocialButton: React.FC<Props> = (props) => {
-    const {soc, disabled} = props;
+    const {soc, disabled, onShareWindowClose} = props;
 
     const [hovered, setHovered] = useState(false);
 
@@ -45,6 +52,7 @@ const SocialButton: React.FC<Props> = (props) => {
             url={shareUrl}
             onMouseOver={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            onShareWindowClose={onShareWindowClose}
             {...props}
         >
             <IconComponent />

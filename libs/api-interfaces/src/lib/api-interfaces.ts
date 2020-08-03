@@ -1,5 +1,5 @@
 export interface User {
-    id: number;
+    id: string;
     shared: boolean;
     email: string;
 }

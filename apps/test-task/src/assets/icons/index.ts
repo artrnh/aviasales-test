@@ -5,3 +5,4 @@ export {ReactComponent as TwitterIcon} from './twitter.svg';
 export {ReactComponent as VkIcon} from './vk.svg';
 export {ReactComponent as OkIcon} from './ok.svg';
 export {ReactComponent as CheckIcon} from './check.svg';
+export {ReactComponent as Man} from './man.svg';

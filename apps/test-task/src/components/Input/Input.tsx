@@ -4,6 +4,7 @@ import {Wrapper} from './styled';
 
 interface Props {
     value?: string;
+    initialValue?: string;
     onChange?(e: React.ChangeEvent<HTMLInputElement>): void;
     disabled?: boolean;
 }
